@@ -28,11 +28,67 @@ def download_models():
         with open(f"loras/FastNegativeV2.pt", "wb") as f:
             f.write(r.content)
 
-    if not os.path.exists("loras/Misato.safetensors") and not NO_DEMO:
+    if not os.path.exists("loras/ng_deepnegative_v1_75t.pt"):
+        # hardcode a single negative embedding
+        r = requests.get(
+            "https://civitai.com/api/download/models/5637?type=Model&format=PickleTensor")
+        with open(f"loras/ng_deepnegative_v1_75t.pt", "wb") as f:
+            f.write(r.content)
+
+    if not os.path.exists("loras/bad_prompt_version2-neg.pt"):
+        # hardcode a single negative embedding
+        r = requests.get(
+            "https://civitai.com/api/download/models/60095?type=Negative&format=PickleTensor")
+        with open(f"loras/bad_prompt_version2-neg.pt", "wb") as f:
+            f.write(r.content)
+
+    if not os.path.exists("loras/badhandv4.pt"):
+        # hardcode a single negative embedding
+        r = requests.get(
+            "https://civitai.com/api/download/models/20068?type=Model&format=PickleTensor")
+        with open(f"loras/badhandv4.pt", "wb") as f:
+            f.write(r.content)
+
+    if not os.path.exists("loras/fcNeg-neg.pt"):
+        # hardcode a single negative embedding
+        r = requests.get(
+            "https://civitai.com/api/download/models/97691?type=Negative&format=PickleTensor")
+        with open(f"loras/fcNeg-neg.pt", "wb") as f:
+            f.write(r.content)
+
+    if not os.path.exists("loras/verybadimagenegative_v1.3.pt"):
+        # hardcode a single negative embedding
+        r = requests.get(
+            "https://civitai.com/api/download/models/25820?type=Model&format=PickleTensor")
+        with open(f"loras/verybadimagenegative_v1.3.pt", "wb") as f:
+            f.write(r.content)
+  
+    if not os.path.exists("loras/add_detail.safetensors"):
         # hardcode a single LoRA for demo purposes
         r = requests.get(
-            "https://civitai.com/api/download/models/181315?type=Model&format=PickleTensor")
-        with open(f"loras/Misato.safetensors", "wb") as f:
+            "https://civitai.com/api/download/models/62833?type=Model&format=PickleTensor")
+        with open(f"loras/add_detail.safetensors", "wb") as f:
+            f.write(r.content)
+
+    if not os.path.exists("loras/Light_and_Shadow.safetensors"):
+        # hardcode a single LoRA for demo purposes
+        r = requests.get(
+            "https://civitai.com/api/download/models/15603?type=Model&format=PickleTensor")
+        with open(f"loras/Light_and_Shadow.safetensors", "wb") as f:
+            f.write(r.content)
+            
+    if not os.path.exists("loras/killua_zoldyck.safetensors"):
+        # hardcode a single LoRA for demo purposes
+        r = requests.get(
+            "https://civitai.com/api/download/models/101097?type=Model&format=PickleTensor")
+        with open(f"loras/killua_zoldyck.safetensors", "wb") as f:
+            f.write(r.content)
+
+    if not os.path.exists("loras/vocaloid_matryoshka-10.safetensors"):
+        # hardcode a single LoRA for demo purposes
+        r = requests.get(
+            "https://civitai.com/api/download/models/140215?type=Model&format=PickleTensor")
+        with open(f"loras/vocaloid_matryoshka-10.safetensors", "wb") as f:
             f.write(r.content)
 
     print("\n###############")
@@ -115,7 +171,7 @@ class Model:
                 self.pipe.load_textual_inversion(f"./loras/{file}", file[:-3])
 
     @method()
-    def inference(self, prompt, n_steps=7, cfg=2, negative_prompt="", loras={}, height=512, width=512):
+    def inference(self, prompt, n_steps=60, cfg=7, negative_prompt="", loras={}, height=768, width=512):
         import torch
 
         with torch.no_grad():
@@ -158,9 +214,9 @@ class Model:
 class InferenceRequest(BaseModel):
     prompt: str
     negative_prompt: str = ""
-    cfg: int = 2
-    n_steps: int = 7
-    height: int = 512
+    cfg: int = 7
+    n_steps: int = 60
+    height: int = 768
     width: int = 512
 
 

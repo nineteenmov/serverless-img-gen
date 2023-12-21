@@ -12,7 +12,7 @@ from diffusers import DiffusionPipeline
     requires cuda, gradio, compel, diffusers etc.
 """
 
-model_id = "Disty0/LCM_SoteMix"
+model_id = "Meina/MeinaMix_V11"
 
 pipe = DiffusionPipeline.from_pretrained(
     model_id, variant="fp16", safety_checker=None, use_safetensors=True)
