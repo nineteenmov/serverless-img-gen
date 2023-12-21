@@ -141,7 +141,7 @@ stub = Stub("sd-image-gen", image=image)
 ### Inference ###
 
 
-@stub.cls(gpu=gpu.T4(count=1), keep_warm=KEEP_WARM)
+@stub.cls(gpu=gpu.A100(count=1), keep_warm=KEEP_WARM)
 class Model:
     def __enter__(self):
         import os
