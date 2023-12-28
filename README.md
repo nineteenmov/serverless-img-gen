@@ -6,7 +6,7 @@ uses modal.com to generate images in ~2s from POST request (cold start not inclu
 
 ## Usage
 ```
-git clone https://github.com/zhaobenny/serverless-img-gen.git && cd serverless-img-gen
+git clone https://github.com/agr19/serverless-img-gen.git && cd serverless-img-gen
 pip install modal python-dotenv
 modal token new
 modal deploy app.py
