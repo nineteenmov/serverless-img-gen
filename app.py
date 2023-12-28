@@ -34,63 +34,63 @@ def download_models():
         with open(f"loras/FastNegativeV2.pt", "wb") as f:
             f.write(r.content)
 
-    if not os.path.exists("loras/ng_deepnegative_v1_75t.pt"):
+    if not NO_DEMO and not os.path.exists("loras/ng_deepnegative_v1_75t.pt"):
         # hardcode a single negative embedding
         r = requests.get(
             "https://civitai.com/api/download/models/5637?type=Model&format=PickleTensor")
         with open(f"loras/ng_deepnegative_v1_75t.pt", "wb") as f:
             f.write(r.content)
 
-    if not os.path.exists("loras/bad_prompt_version2-neg.pt"):
+    if not NO_DEMO and not os.path.exists("loras/bad_prompt_version2-neg.pt"):
         # hardcode a single negative embedding
         r = requests.get(
             "https://civitai.com/api/download/models/60095?type=Negative&format=PickleTensor")
         with open(f"loras/bad_prompt_version2-neg.pt", "wb") as f:
             f.write(r.content)
 
-    if not os.path.exists("loras/badhandv4.pt"):
+    if not NO_DEMO and not os.path.exists("loras/badhandv4.pt"):
         # hardcode a single negative embedding
         r = requests.get(
             "https://civitai.com/api/download/models/20068?type=Model&format=PickleTensor")
         with open(f"loras/badhandv4.pt", "wb") as f:
             f.write(r.content)
 
-    if not os.path.exists("loras/fcNeg-neg.pt"):
+    if not NO_DEMO and not os.path.exists("loras/fcNeg-neg.pt"):
         # hardcode a single negative embedding
         r = requests.get(
             "https://civitai.com/api/download/models/97691?type=Negative&format=PickleTensor")
         with open(f"loras/fcNeg-neg.pt", "wb") as f:
             f.write(r.content)
 
-    if not os.path.exists("loras/verybadimagenegative_v1.3.pt"):
+    if not NO_DEMO and not os.path.exists("loras/verybadimagenegative_v1.3.pt"):
         # hardcode a single negative embedding
         r = requests.get(
             "https://civitai.com/api/download/models/25820?type=Model&format=PickleTensor")
         with open(f"loras/verybadimagenegative_v1.3.pt", "wb") as f:
             f.write(r.content)
   
-    if not os.path.exists("loras/add_detail.safetensors"):
+    if not NO_DEMO and not os.path.exists("loras/add_detail.safetensors"):
         # hardcode a single LoRA for demo purposes
         r = requests.get(
             "https://civitai.com/api/download/models/62833?type=Model&format=PickleTensor")
         with open(f"loras/add_detail.safetensors", "wb") as f:
             f.write(r.content)
 
-    if not os.path.exists("loras/Light_and_Shadow.safetensors"):
+    if not NO_DEMO and not os.path.exists("loras/Light_and_Shadow.safetensors"):
         # hardcode a single LoRA for demo purposes
         r = requests.get(
             "https://civitai.com/api/download/models/15603?type=Model&format=PickleTensor")
         with open(f"loras/Light_and_Shadow.safetensors", "wb") as f:
             f.write(r.content)
             
-    if not os.path.exists("loras/killua_zoldyck.safetensors"):
+    if not NO_DEMO and not os.path.exists("loras/killua_zoldyck.safetensors"):
         # hardcode a single LoRA for demo purposes
         r = requests.get(
             "https://civitai.com/api/download/models/101097?type=Model&format=PickleTensor")
         with open(f"loras/killua_zoldyck.safetensors", "wb") as f:
             f.write(r.content)
 
-    if not os.path.exists("loras/vocaloid_matryoshka-10.safetensors"):
+    if not NO_DEMO and not os.path.exists("loras/vocaloid_matryoshka-10.safetensors"):
         # hardcode a single LoRA for demo purposes
         r = requests.get(
             "https://civitai.com/api/download/models/140215?type=Model&format=PickleTensor")
