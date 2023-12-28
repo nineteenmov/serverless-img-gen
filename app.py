@@ -186,8 +186,9 @@ class Model:
                 self.pipe.load_textual_inversion(f"./loras/{file}", file[:-3])
 
     @method()
+    @torch.inference_mode()
     def inference(self, prompt, n_steps=60, cfg=7, negative_prompt="", loras={}, height=768, width=512):
-        import torch
+        conditioning = self.compel.build_conditioning_tensor(prompt)
 
         negative_conditioning = self.compel.build_conditioning_tensor(negative_prompt)
 
