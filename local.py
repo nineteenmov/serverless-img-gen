@@ -12,11 +12,17 @@ from diffusers import DiffusionPipeline
     requires cuda, gradio, compel, diffusers etc.
 """
 
-model_id = "Lykon/AAM_XL_AnimeMix"
+model_id = "Meina/MeinaMix_V11"
 
 pipe = DiffusionPipeline.from_pretrained(
-    model_id, variant="fp16", safety_checker=None, use_safetensors=True)
+    model_id, safety_checker=None, use_safetensors=True)
 pipe.load_textual_inversion("./loras/FastNegativeV2.pt", "FastNegativeV2")
+pipe.load_textual_inversion("./loras/fcNeg-neg.pt", "fcNeg-neg")
+pipe.load_textual_inversion("./loras/badhandv4.pt", "badhandv4")
+pipe.load_textual_inversion("./loras/bad_prompt_version2-neg.pt", "bad_prompt_version2-neg")
+pipe.load_textual_inversion("./loras/ng_deepnegative_v1_75t.pt", "ng_deepnegative_v1_75t")
+
+
 textual_inversion_manager = DiffusersTextualInversionManager(pipe)
 pipe.to(device="cuda", dtype=torch.float16)
 

@@ -18,7 +18,6 @@ def download_models():
 
     pipe = DiffusionPipeline.from_pretrained(
         MODEL,
-        variant="fp16",
         feature_extractor=None,
         safety_checker=None,
         requires_safety_checker=False
@@ -165,7 +164,6 @@ class Model:
 
         self.pipe = DiffusionPipeline.from_pretrained(
             MODEL,
-            variant="fp16",
             safety_checker=None,
             requires_safety_checker=False,
         )
