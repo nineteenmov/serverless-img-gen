@@ -17,7 +17,7 @@ EXTRA_URL = os.getenv("EXTRA_URL") or "great-potato-microwave"
 KEEP_WARM = None
 
 # Diffusion model id (from huggingface.co/models)
-MODEL = "Lykon/AAM_XL_AnimeMix"
+MODEL = "Meina/MeinaMix_V11"
 
 # Skips downloading demo LoRA/embedding (for compatibility with non SD 1.5 models)
 NO_DEMO = False
