@@ -231,7 +231,10 @@ class InferenceRequest(BaseModel):
     n_steps: int = 60
     height: int = 768
     width: int = 512
-
+    enable_hr: bool = True
+    hr_scale: int = 1.5
+    hr_upscaler: str = "4x-AnimeSharp"
+    denoising_strength: float = 0.4
 
 class LorasResponse(BaseModel):
     loras: list[str] = []
