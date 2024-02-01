@@ -67,34 +67,34 @@ def download_models():
             "https://civitai.com/api/download/models/25820?type=Model&format=PickleTensor")
         with open(f"loras/verybadimagenegative_v1.3.pt", "wb") as f:
             f.write(r.content)
-  
-    if not NO_DEMO and not os.path.exists("loras/add_detail.safetensors"):
-        # hardcode a single LoRA for demo purposes
-        r = requests.get(
-            "https://civitai.com/api/download/models/62833?type=Model&format=PickleTensor")
-        with open(f"loras/add_detail.safetensors", "wb") as f:
-            f.write(r.content)
 
-    if not NO_DEMO and not os.path.exists("loras/Light_and_Shadow.safetensors"):
+    #if not NO_DEMO and not os.path.exists("loras/add_detail.safetensors"):
         # hardcode a single LoRA for demo purposes
-        r = requests.get(
-            "https://civitai.com/api/download/models/15603?type=Model&format=PickleTensor")
-        with open(f"loras/Light_and_Shadow.safetensors", "wb") as f:
-            f.write(r.content)
+      #  r = requests.get(
+     #       "https://civitai.com/api/download/models/62833?type=Model&format=PickleTensor")
+      #  with open(f"loras/add_detail.safetensors", "wb") as f:
+    #        f.write(r.content)
+
+ #   if not NO_DEMO and not os.path.exists("loras/Light_and_Shadow.safetensors"):
+        # hardcode a single LoRA for demo purposes
+     #   r = requests.get(
+      #      "https://civitai.com/api/download/models/15603?type=Model&format=PickleTensor")
+      #  with open(f"loras/Light_and_Shadow.safetensors", "wb") as f:
+     #       f.write(r.content)
             
-    if not NO_DEMO and not os.path.exists("loras/killua_zoldyck.safetensors"):
+ #   if not NO_DEMO and not os.path.exists("loras/killua_zoldyck.safetensors"):
         # hardcode a single LoRA for demo purposes
-        r = requests.get(
-            "https://civitai.com/api/download/models/101097?type=Model&format=PickleTensor")
-        with open(f"loras/killua_zoldyck.safetensors", "wb") as f:
-            f.write(r.content)
+    #    r = requests.get(
+     #       "https://civitai.com/api/download/models/101097?type=Model&format=PickleTensor")
+     #   with open(f"loras/killua_zoldyck.safetensors", "wb") as f:
+      #     f.write(r.content)
 
-    if not NO_DEMO and not os.path.exists("loras/vocaloid_matryoshka-10.safetensors"):
+ #   if not NO_DEMO and not os.path.exists("loras/vocaloid_matryoshka-10.safetensors"):
         # hardcode a single LoRA for demo purposes
-        r = requests.get(
-            "https://civitai.com/api/download/models/140215?type=Model&format=PickleTensor")
-        with open(f"loras/vocaloid_matryoshka-10.safetensors", "wb") as f:
-            f.write(r.content)
+    #    r = requests.get(
+    #        "https://civitai.com/api/download/models/140215?type=Model&format=PickleTensor")
+    #    with open(f"loras/vocaloid_matryoshka-10.safetensors", "wb") as f:
+      #      f.write(r.content)
 
     print("\n###############")
     print("\nImported the following LoRAs:")
@@ -231,7 +231,10 @@ class InferenceRequest(BaseModel):
     n_steps: int = 60
     height: int = 768
     width: int = 512
-
+    enable_hr: bool = True
+    hr_scale: int = 1.5
+    hr_upscaler: str = "4x-AnimeSharp"
+    denoising_strength: float = 0.4
 
 class LorasResponse(BaseModel):
     loras: list[str] = []
